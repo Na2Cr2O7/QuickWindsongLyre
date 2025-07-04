@@ -3,7 +3,7 @@
 
 # 🎵 QuickWindsongLyre - 快速原琴音乐合成器
 
-**QuickWindsongLyre** 是一个专为《原神》中的小道具琴设计的音乐合成工具，可以快速将 MIDI 或自定义音符转化为游戏风格的音频文件。
+**QuickWindsongLyre** 是一个专为《原神》中的小道具琴设计的音乐合成工具，可以快速将 MIDI 转化为音频文件。
 
 ---
 
