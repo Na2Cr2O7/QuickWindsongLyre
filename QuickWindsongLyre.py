@@ -21,6 +21,8 @@ def load_json(filename):
     with open(filename, 'r', encoding='utf-8') as file:
         data = json.load(file)
     return data
+def println(*args):
+    print(*args)
 def print(*args):
     messagebox.showinfo(getTranslation('Title'),*args)
 
@@ -58,16 +60,19 @@ def select_midi_file():
         midInput=file_path
 
 midt=None
+import shutil
 def export_audio():
     global midt,midInput
+    newPath=os.path.join(os.getcwd(),'temp.wav')
+    shutil.copyfile(wavName,newPath)
     # 弹出文件保存对话框
     file_path = filedialog.asksaveasfilename(title=getTranslation('ExportAudio'), defaultextension=".wav",
                                              filetypes=[("WAV files", "*.wav"), ("MP3 files", "*.mp3")])
     
     midiTrack=midt.get()
     if file_path:
-        print(f'Python SeparateVoice.py -i "{midInput}" -w "{wavName}" -o "{file_path}" -t {midiTrack}')
-        r=os.system(f'Python SeparateVoice.py -i "{midInput}" -w "{wavName}" -o "{file_path}" -t {midiTrack}' )
+        print(f'Python SeparateVoice.py -i "{midInput}" -w "{newPath}" -o "{file_path}" -t {midiTrack} -C')
+        r=os.system(f'Python SeparateVoice.py -i "{midInput}" -w "{newPath}" -o "{file_path}" -t {midiTrack} -C' )
         if r==0:
             print(f"{getTranslation('ExportAudioSuccess')}{file_path}")
         else:
